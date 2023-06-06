@@ -19,6 +19,8 @@ jobs:
 
     - name: Commit & Push changes
       run: |
+        git config --global user.name "Your Name"
+        git config --global user.email "you@example.com"
         git commit -am "Automated commit"
         git push
 
