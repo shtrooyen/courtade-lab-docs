@@ -1,0 +1,2 @@
+- name: mkdocs-build-action
+  uses: jnanadarshan/mkdocs-build-action@v0.24
