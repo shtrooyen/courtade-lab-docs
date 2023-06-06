@@ -1,0 +1,6 @@
+site_name: Courtade Lab Docs
+site_url: http://folk.ntnu.no/courtade
+nav:
+    - Home: index.md
+    - HPC Protocols: hpc.md
+theme: readthedocs

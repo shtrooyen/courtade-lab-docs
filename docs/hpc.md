@@ -1,0 +1,83 @@
+# HPC Stuff
+
+## Passwordless login
+cd ~/.ssh
+ssh-keygen
+
+Host *
+User username
+Compression yes
+ForwardX11 yes
+ForwardX11Trusted yes
+XAuthLocation /opt/X11/bin/xauth
+
+AddKeysToAgent yes
+UseKeychain yes
+
+Host ntnu
+HostName login.ansatt.ntnu.no
+
+IdentityFile ~/.ssh/mykey
+
+ssh-copy-id -i mykey.pub ntnu
+
+## Packages needed in herod
+cmake
+gnuplot
+openmpi-bin
+libopenmpi-dev
+
+## GROMACS compule
+Install cuda-toolkit from conda -c nvidia
+activate conda environment
+
+```
+rm -r build
+mkdir build
+GMX_DIR=$(pwd)
+cd build
+cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_GPU=CUDA -DMPI_C_COMPILER=mpicc -DMPI_CXX_COMPILER=mpicxx -DCMAKE_INSTALL_PREFIX=$GMX_DIR
+make
+make check
+```
+
+Alternative, in case cmake and openmpi have to be manually compiled
+
+```
+#!/bin/bash
+
+cmake=/cluster/courtade/software/cmake-3.25.0-linux-x86_64/bin/cmake
+rm -r build
+mkdir build
+cd build
+$cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_GPU=CUDA -DMPI_C_COMPILER=/cluster/courtade/software/openmpi-4.1.4/bin/mpicc -DMPI_CXX_COMPILER=/cluster/courtade/software/openmpi-4.1.4/bin/mpicxx
+make
+make check
+make install
+source /usr/local/gromacs/bin/GMXRC
+```
+
+## sbatch script example
+```
+#!/bin/bash
+#
+#SBATCH --job-name=bench2
+#SBATCH --gres=gpu:0
+#SBATCH --mem=2G
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --partition=normal
+#SBATCH --time=00:10:00
+rm \#*
+gmx=/home/courtade/programs/gromacs-2022.3/build/bin/gmx
+#export GMX_DISABLE_GPU_DETECTION=1
+cp benchMEM.tpr $SLURM_JOB_NAME.tpr
+$gmx mdrun -deffnm $SLURM_JOB_NAME -ntmpi $SLURM_NTASKS -ntomp $SLURM_CPUS_PER_TASK
+```
+
+## plumed installation
+```
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/courtade/programs/plumed-2.8.1/lib
+export PLUMED_KERNEL=/home/courtade/programs/plumed-2.8.1/lib/libplumedKernel.so
+plumed=/home/courtade/programs/plumed-2.8.1/bin/plumed
+```
