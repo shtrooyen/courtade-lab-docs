@@ -11,6 +11,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+      with:
+      github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build
       uses: gcourtade/mkdocs-build-action@master
@@ -19,6 +21,5 @@ jobs:
       run: |
         git commit -am "Automated commit"
         git push
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+
 
