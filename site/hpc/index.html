@@ -48,6 +48,10 @@
                 <li class="toctree-l1 current"><a class="reference internal current" href="./">HPC Protocols</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#passwordless-login">Passwordless login</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#sshconfig">~/.ssh/config</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#packages-needed-in-herod">Packages needed in herod</a>
     </li>
@@ -56,6 +60,18 @@
     <li class="toctree-l2"><a class="reference internal" href="#sbatch-script-example">sbatch script example</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#plumed-installation">plumed installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#slurm">slurm</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#slurmconf">slurm.conf</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#gresconf">gres.conf</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cgroupconf">cgroup.conf</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#daily-backup">daily backup</a>
     </li>
     </ul>
                 </li>
@@ -85,25 +101,30 @@
               
                 <h1 id="hpc-stuff">HPC Stuff</h1>
 <h2 id="passwordless-login">Passwordless login</h2>
-<p>cd ~/.ssh
-ssh-keygen</p>
-<p>Host *
+<p><code>cd ~/.ssh</code> and <code>ssh-keygen</code> then edit config as below.</p>
+<h3 id="sshconfig">~/.ssh/config</h3>
+<pre><code>Host *
 User username
 Compression yes
 ForwardX11 yes
 ForwardX11Trusted yes
-XAuthLocation /opt/X11/bin/xauth</p>
-<p>AddKeysToAgent yes
-UseKeychain yes</p>
-<p>Host ntnu
-HostName login.ansatt.ntnu.no</p>
-<p>IdentityFile ~/.ssh/mykey</p>
-<p>ssh-copy-id -i mykey.pub ntnu</p>
+XAuthLocation /opt/X11/bin/xauth
+
+AddKeysToAgent yes
+UseKeychain yes
+
+Host ntnu
+HostName login.ansatt.ntnu.no
+
+IdentityFile ~/.ssh/mykey
+</code></pre>
+<p>Then execute <code>ssh-copy-id -i mykey.pub ntnu</code> to copy to host.</p>
 <h2 id="packages-needed-in-herod">Packages needed in herod</h2>
 <p>cmake
 gnuplot
 openmpi-bin
-libopenmpi-dev</p>
+libopenmpi-dev
+xclip</p>
 <h2 id="gromacs-compule">GROMACS compule</h2>
 <p>Install cuda-toolkit from conda -c nvidia
 activate conda environment</p>
@@ -148,6 +169,154 @@ $gmx mdrun -deffnm $SLURM_JOB_NAME -ntmpi $SLURM_NTASKS -ntomp $SLURM_CPUS_PER_T
 <pre><code>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/courtade/programs/plumed-2.8.1/lib
 export PLUMED_KERNEL=/home/courtade/programs/plumed-2.8.1/lib/libplumedKernel.so
 plumed=/home/courtade/programs/plumed-2.8.1/bin/plumed
+</code></pre>
+<h2 id="slurm">slurm</h2>
+<h3 id="slurmconf">slurm.conf</h3>
+<pre><code># instant slurm file, automatically generated
+ClusterName=herod
+SlurmctldHost=localhost
+SlurmdUser=root
+MpiDefault=none
+ProctrackType=proctrack/cgroup
+ReturnToService=1
+SlurmctldPidFile=/var/run/slurmctld.pid
+SlurmctldPort=6817
+SlurmdPidFile=/var/run/slurmd.pid
+SlurmdPort=6818
+SlurmdSpoolDir=/var/spool/slurmd
+StateSaveLocation=/var/spool/slurmctld
+SwitchType=switch/none
+TaskPlugin=task/cgroup,task/affinity
+InactiveLimit=0
+KillWait=30
+MinJobAge=300
+SlurmctldTimeout=120
+SlurmdTimeout=300
+Waittime=0
+SchedulerType=sched/builtin
+SelectType=select/cons_tres
+SelectTypeParameters=CR_Core_Memory
+AccountingStorageType=accounting_storage/none
+JobCompType=jobcomp/none
+JobAcctGatherFrequency=30
+JobAcctGatherType=jobacct_gather/none
+SlurmctldDebug=info
+SlurmctldLogFile=/var/log/slurmctld.log
+SlurmdDebug=info
+SlurmdLogFile=/var/log/slurmd.log
+
+# node conf with gpu
+GresTypes=gpu
+PartitionName=normal Nodes=localhost Default=YES MaxTime=UNLIMITED State=UP
+NodeName=localhost CPUs=32 Boards=1 SocketsPerBoard=2 CoresPerSocket=8 ThreadsPerCore=2 RealMemory=30000 Gres=gpu:2
+</code></pre>
+<h3 id="gresconf">gres.conf</h3>
+<pre><code>Name=gpu File=/dev/nvidia[0-1] Count=2
+</code></pre>
+<h3 id="cgroupconf">cgroup.conf</h3>
+<pre><code>CgroupAutomount=yes
+ConstrainCores=no
+ConstrainDevices=yes
+ConstrainRAMSpace=no
+ConstrainSwapSpace=no
+</code></pre>
+<h2 id="daily-backup">daily backup</h2>
+<p>The daily-backup.sh script</p>
+<pre><code class="language-bash">#!/bin/bash
+# ----------------------------------------------------------------------
+# mikes handy rotating-filesystem-snapshot utility
+# ----------------------------------------------------------------------
+# this needs to be a lot more general, but the basic idea is it makes
+# rotating backup-snapshots of /home whenever called
+# ----------------------------------------------------------------------
+# GC: deletes oldest daily backup when running out of space
+# GC: makes a new folder with date
+#
+
+unset PATH  # suggestion from H. Milz: avoid accidental use of $PATH
+
+# ------------- system commands used by this script --------------------
+ID=/usr/bin/id;
+ECHO=/bin/echo;
+
+MOUNT=/bin/mount;
+UMOUNT=/bin/umount;
+RM=/bin/rm;
+MV=/bin/mv;
+CP=/bin/cp;
+TOUCH=/bin/touch;
+
+RSYNC=/usr/bin/rsync;
+
+DATE=/usr/bin/date;
+DF=/usr/bin/df;
+AWK=/usr/bin/awk;
+FIND=/usr/bin/find;
+SORT=/usr/bin/sort;
+# ------------- file locations -----------------------------------------
+
+MOUNT_DEVICE=/dev/sda1;
+SNAPSHOT_RW=/backup;
+EXCLUDES=/home/courtade/backup_exclude;
+
+
+# ------------- the script itself --------------------------------------
+
+# make sure we're running as root
+if (( `$ID -u` != 0 )); then { $ECHO &quot;Sorry, must be root.  Exiting...&quot;; exit; } fi
+
+# attempt to remount the RW mount point as RW; else abort
+$UMOUNT $SNAPSHOT_RW ;
+$MOUNT -o rw $MOUNT_DEVICE $SNAPSHOT_RW ;
+if (( $? )); then
+{
+    $ECHO &quot;snapshot: could not remount $SNAPSHOT_RW readwrite&quot;;
+    exit;
+}
+fi;
+
+
+# step 1:  get date
+today=$($DATE +%F);
+
+# step 2:  free space if necessary
+cd $SNAPSHOT_RW/work/
+a=$($DF . | $AWK 'NR&gt;1 {print $4}')
+a2=${a::-1}
+$ECHO &quot;$a2&quot;
+while [[ $a2 &lt; 20000000 ]];
+do
+    IFS= read -r -d $'\0' line &lt; &lt;($FIND . -maxdepth 1 -type d -printf '%T@ %p\0' \
+        2&gt;/dev/null | $SORT -z -n)
+    file=&quot;${line#* }&quot;
+        $RM -r  $file
+done
+
+cd /
+
+# step 3: rsync from the system into the latest snapshot (notice that
+# rsync behaves like cp --remove-destination by default, so the destination
+# is unlinked first.  If it were not so, this would copy over the other
+# snapshot(s) too!
+$RSYNC                                      \
+    -va --delete --delete-excluded --exclude-from=&quot;$EXCLUDES&quot;  --mkpath \
+    /work/ $SNAPSHOT_RW/work/$today ;
+
+
+# and thats it for home.
+
+# now remount the RW snapshot mountpoint as readonly
+$UMOUNT $SNAPSHOT_RW ;
+$MOUNT -o ro $MOUNT_DEVICE $SNAPSHOT_RW ;
+if (( $? )); then
+{
+    $ECHO &quot;snapshot: could not remount $SNAPSHOT_RW readonly&quot;;
+    exit;
+} fi;
+</code></pre>
+<p>Run by placing the following script inide <code>/etc/cron.daily</code>. Remember to make it executable wih <code>chmod +x</code>.</p>
+<pre><code>#!/bin/bash
+exec /usr/local/bin/daily-backup.sh
 </code></pre>
               
             </div>
