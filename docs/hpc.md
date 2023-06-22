@@ -22,14 +22,15 @@ IdentityFile ~/.ssh/mykey
 ```
 Then execute `ssh-copy-id -i mykey.pub ntnu` to copy to host.
 
-## Packages needed in herod
+## Software installation
+### Packages needed in herod
 cmake
 gnuplot
 openmpi-bin
 libopenmpi-dev
 xclip
 
-## GROMACS compule
+### GROMACS compile
 Install cuda-toolkit from conda -c nvidia
 activate conda environment
 
@@ -59,25 +60,7 @@ make install
 source /usr/local/gromacs/bin/GMXRC
 ```
 
-## sbatch script example
-```
-#!/bin/bash
-#
-#SBATCH --job-name=bench2
-#SBATCH --gres=gpu:0
-#SBATCH --mem=2G
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --partition=normal
-#SBATCH --time=00:10:00
-rm \#*
-gmx=/home/courtade/programs/gromacs-2022.3/build/bin/gmx
-#export GMX_DISABLE_GPU_DETECTION=1
-cp benchMEM.tpr $SLURM_JOB_NAME.tpr
-$gmx mdrun -deffnm $SLURM_JOB_NAME -ntmpi $SLURM_NTASKS -ntomp $SLURM_CPUS_PER_TASK
-```
-
-## plumed installation
+### plumed installation
 ```
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/courtade/programs/plumed-2.8.1/lib
 export PLUMED_KERNEL=/home/courtade/programs/plumed-2.8.1/lib/libplumedKernel.so
@@ -242,5 +225,35 @@ Run by placing the following script inide `/etc/cron.daily`. Remember to make it
 exec /usr/local/bin/daily-backup.sh
 ```
 
+## sbatch script example
+```
+#!/bin/bash
+#
+#SBATCH --job-name=bench2
+#SBATCH --gres=gpu:0
+#SBATCH --mem=2G
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --partition=normal
+#SBATCH --time=00:10:00
+rm \#*
+gmx=/home/courtade/programs/gromacs-2022.3/build/bin/gmx
+#export GMX_DISABLE_GPU_DETECTION=1
+cp benchMEM.tpr $SLURM_JOB_NAME.tpr
+$gmx mdrun -deffnm $SLURM_JOB_NAME -ntmpi $SLURM_NTASKS -ntomp $SLURM_CPUS_PER_TASK
+```
 
+## ~/.bshrc
+```
+# User specific aliases and functions
+export DISPLAY=$(echo $SSH_CLIENT | awk '{ print $1}'):0.0
+export SLURMD=/usr/sbin/slurmd
+export SLURMCONF=/etc/slurm/slurm.conf
+export GRESCONF=/etc/slurm/gres.conf
+export SINFO_FORMAT="%15o %.5D %12P %11T %15O %.6m %15E %.C %G"
+export SQUEUE_FORMAT="%.18i %.9P %.14j %.8u %.8T %.10M  %.6D %.R %.b"
+export SQUEUE_SORT="u,T"
+alias squeue_me="squeue | grep -e courtade"
+alias lsl="ls -ltrh"
+```
 
