@@ -153,7 +153,7 @@ All components of SDS page are from GenScript, found [here](https://www.genscrip
 -	Apply 20 µL lysate, 5 µL ladder (from freezer), and 20 µL of all samples to the wells of the SDS-PAGE gel.
 -	Run the gel at 200 V, 30 min with constant voltage.
 
-### Staining/destaining:
+### Staining/destaining
 -	On the staining machine, take out one of the membrane plates A or B. 
 -	Take a filter paper from beside the machine. 
 -	Separate the plastic plates of the SDS-PAGE gel with the metal tool. 
