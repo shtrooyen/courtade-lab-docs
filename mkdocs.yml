@@ -7,4 +7,4 @@ theme: readthedocs
 
 plugins:
     - encryptcontent:
-        use_secret: !ENV [ENCRYPTCONTENT_PASSWORD]
+        use_secret: '${{ secrets.ENCRYPTCONTENT_PASSWORD }}'
