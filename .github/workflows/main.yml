@@ -18,6 +18,8 @@ jobs:
  
 
     - name: Build
+      env:
+        ENCRYPTCONTENT_PASSWORD: ${{ secrets.ENCRYPTCONTENT_PASSWORD }} 
       uses: gcourtade/mkdocs-build-action@master
 
     - name: Commit & Push changes
