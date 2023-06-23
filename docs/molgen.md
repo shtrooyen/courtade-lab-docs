@@ -12,6 +12,7 @@
 
 ### 1xLB-medium
 (see recipe in red folder in lab kitchen)
+
 - 10 g/L tryptone
 - 5 g/L yeast extract
 - 5 g/L NaCl
@@ -22,23 +23,23 @@
 
 Always sterilise the bench and use the burner to work in sterile environment when handling cells. 
 
-### Pre-culture:
+### Pre-culture
 -	Always use burner, sterilize the bench.
 -	To a small autoclaved shake flask, add 5 mL 1xLB and 5 µL kanamycin (50 µg/mL total concentration kanamycin). Kanamycin stock: 50 mg/mL. 
 -	Add a small amount of cells from the -80°C freezer to the shake flask, using a pipette tip. 
     -	The lid can be placed with the inside down on the sterilized bench. 
 -	Incubate at 37°C in the top left incubator at 37°C, 225 rpm for at least 6 h. Without aluminium foil. 
 
-### Main culture in shaking incubator: 
+### Main culture in shaking incubator
 -	Inoculate 2xLB-medium (500 mL) + kanamycin (500 uL) in a 2 L baffled shake flask, with 5 mL pre-culture (1%). 
 -	Incubate overnight at 22°C, 225 rpm (without aluminium foil). Incubator must be booked. 
 
-### Inducing the gene:
+### Inducing the gene
 -	Place the flasks on ice when out of the incubator. 
 -	Add 0.5 mL IPTG (0.1 mM total concentration) (inducer) to the 500 mL main culture. IPTG is found in freezer, pre-made 0.1 M tubes. 
 -	Incubate at 22°C, 225 rpm for 24 h. 
 
-### Using the LEX bubble fermenter: 
+### Using the LEX bubble fermenter 
 -	Use a 1L bottle with blue lid for the main culture medium. 
 -	Connect to power: 1) the ventilator, 2) the water bath, 3) the pump (for after). 
 -	Fill the water bath so that the floating thing is all the way up (or it will stop). 
@@ -56,7 +57,7 @@ Always sterilise the bench and use the burner to work in sterile environment whe
     -	Release air from the system using the black valve. 
     -	Pump water from the water bath, and leave the lid open to evaporate the rest. 
     -	Turn off: temperature, ventilator and pump.
-### Harvesting the culture:
+### Harvesting the culture
 -	Now the cells will be destroyed, no longer very important with sterile environment. Keep on ice.
 -	Transfer the culture to large centrifuge tube. 
 -	Centrifuge at 5000 xg, 4°C for 10 min. The centrifuge must be booked. Balance the centrifuge to <0.1 mg difference. 
@@ -64,8 +65,9 @@ Always sterilise the bench and use the burner to work in sterile environment whe
 -	The pellet can be stored at -18°C in the freezer before purification (just as it is now).
 
 
-### Buffers:
+### Buffers
 Buffer A: 
+
 -	50 mM Trizma  = 3.94g 
 -	300 mM NaCl = 8.77 g
 -	500 mL RO-water
@@ -73,6 +75,7 @@ Buffer A:
 -	Sterile filtration, use 0.45 µM filters and water aspirator.
 
 Buffer B:
+
 -	50 mmM Trizma = 3.94g 
 -	300 mM NaCl = 8.77g
 -	400 mM Imidazole = 13.62g
@@ -80,7 +83,7 @@ Buffer B:
 -	Adjust pH with HCl to pH 8.00.
 -	Sterile filtration, use 0.45 µM filters and water aspirator.
 
-### Preparation for purification:
+### Preparation for purification
 -	Resuspend cells in 25 mL buffer A in a 50 mL tube, and put them back on ice. 
 -	Add one pellet of EDTA-free protease inhibitors (complete ultra). 
 -	Use the sonicator to lyse the cells. 
@@ -92,7 +95,7 @@ Buffer B:
 -	Filter the supernatant with a syringe into a new tube. 
 -	Save 20 µL of the lysate to analyse with SDS-PAGE. 
 
-### FPLC:
+### FPLC
 -	Run FPLC on the supernatant. 
     -	Column: His-Tag marked Tina. 
     -	Connect the Ni-column.
@@ -106,7 +109,7 @@ Buffer B:
     -	Wash pumps with water and 20% EtOH. 
 -	Remember to take out the collection rack and the empty sample tube. 
 
-### SEC:
+### SEC
 -	The SEC column is next to the FPLC machine. 
 -	The procedure consists of 3 stages, equilibration of the column with buffer, elution of the proteins and wash of the column with water and EtOH. 
 -	Wash pump A, Buff and S1 with the buffer.
