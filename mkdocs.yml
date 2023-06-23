@@ -4,3 +4,7 @@ nav:
     - Home: index.md
     - HPC Protocols: hpc.md
 theme: readthedocs
+
+plugins:
+    - encryptcontent:
+        global_password: 'your_password'
