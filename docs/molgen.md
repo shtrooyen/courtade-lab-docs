@@ -4,18 +4,19 @@
 
 
 ## Media
-### Preparation of LB-medium:
-2xLB medium:
+### 2xLB medium:
 - 20g/L tryptone
 - 10 g/L yeast extract
 - 5 g/L NaCl
 - 1L water
 
-### 1xLB-medium: see recipe in red folder in lab kitchen. 
+### 1xLB-medium
+(see recipe in red folder in lab kitchen)
 - 10 g/L tryptone
 - 5 g/L yeast extract
 - 5 g/L NaCl
 - 1L water
+
 
 ## ScCMB2 protein production and purification
 
@@ -137,8 +138,8 @@ Buffer B:
 -	Remember to take out the collection rack and the empty sample tube. 
 
 ## SDS-PAGE:
-All components of SDS page are from GenScript.
-https://www.genscript.com/product/documents?producttype=&cat_no=M42012&catalogtype=Document-PROTOCOL&Search=Search 
+All components of SDS page are from GenScript, found [here](https://www.genscript.com/product/documents?producttype=&cat_no=M42012&catalogtype=Document-PROTOCOL&Search=Search).
+
 -	Determine which samples from FPLC/SEC to go on the gel, take out 20 µL of each sample. 
 -	Dilute the lysate.
 -	Add 20 µL of LDS (from freezer) to each sample. Concentrated LDS is in the fridge. LDS is a detergent with added reductant to reduce disulfide bonds and denature the protein.
