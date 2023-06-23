@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://folk.ntnu.no/courtade/hpc/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>HPC Protocols - Courtade Lab Docs</title>
+    <title>[Protected] HPC Protocols - Courtade Lab Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "HPC Protocols";
+        var mkdocs_page_name = "[Protected] HPC Protocols";
         var mkdocs_page_input_path = "hpc.md";
         var mkdocs_page_url = "/courtade/hpc/";
       </script>
@@ -37,11 +37,11 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">[Protected] Home</a>
                 </li>
               </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">HPC Protocols</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">[Protected] HPC Protocols</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#passwordless-login">Passwordless login</a>
         <ul>
@@ -92,7 +92,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-      <li>HPC Protocols</li>
+      <li>[Protected] HPC Protocols</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -101,243 +101,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="hpc-stuff">HPC Stuff</h1>
-<h2 id="passwordless-login">Passwordless login</h2>
-<p><code>cd ~/.ssh</code> and <code>ssh-keygen</code> then edit config as below.</p>
-<h3 id="sshconfig">~/.ssh/config</h3>
-<pre><code>Host *
-User username
-Compression yes
-ForwardX11 yes
-ForwardX11Trusted yes
-XAuthLocation /opt/X11/bin/xauth
+                <div id="mkdocs-encrypted-content" style="display:none">q5gjs7YZCtmpwAhGIJoqsw==;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;^</div>
+<div id="mkdocs-decrypted-content">
+    <form id="mkdocs-decrypt-form">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input type="password" id="mkdocs-content-password" placeholder="Use CTRL+ENTER to provide global password" />
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
 
-AddKeysToAgent yes
-UseKeychain yes
+<script type="text/javascript">
+var encryptcontent_path = "courtade/hpc/";
+var decryption_failure_message = "Invalid password.";
+</script>
 
-Host ntnu
-HostName login.ansatt.ntnu.no
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/enc-base64.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/cipher-core.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/md5.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/aes.js"></script>
+<script type="text/javascript" src="../assets/javascripts/decrypt-contents.js" defer></script>
 
-IdentityFile ~/.ssh/mykey
-</code></pre>
-<p>Then execute <code>ssh-copy-id -i mykey.pub ntnu</code> to copy to host.</p>
-<h2 id="software-installation">Software installation</h2>
-<h3 id="packages-needed-in-herod">Packages needed in herod</h3>
-<p>cmake
-gnuplot
-openmpi-bin
-libopenmpi-dev
-xclip</p>
-<h3 id="gromacs-compile">GROMACS compile</h3>
-<p>Install cuda-toolkit from conda -c nvidia
-activate conda environment</p>
-<pre><code>rm -r build
-mkdir build
-GMX_DIR=$(pwd)
-cd build
-cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_GPU=CUDA -DMPI_C_COMPILER=mpicc -DMPI_CXX_COMPILER=mpicxx -DCMAKE_INSTALL_PREFIX=$GMX_DIR
-make
-make check
-</code></pre>
-<p>Alternative, in case cmake and openmpi have to be manually compiled</p>
-<pre><code>#!/bin/bash
-
-cmake=/cluster/courtade/software/cmake-3.25.0-linux-x86_64/bin/cmake
-rm -r build
-mkdir build
-cd build
-$cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_GPU=CUDA -DMPI_C_COMPILER=/cluster/courtade/software/openmpi-4.1.4/bin/mpicc -DMPI_CXX_COMPILER=/cluster/courtade/software/openmpi-4.1.4/bin/mpicxx
-make
-make check
-make install
-source /usr/local/gromacs/bin/GMXRC
-</code></pre>
-<h3 id="plumed-installation">plumed installation</h3>
-<pre><code>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/courtade/programs/plumed-2.8.1/lib
-export PLUMED_KERNEL=/home/courtade/programs/plumed-2.8.1/lib/libplumedKernel.so
-plumed=/home/courtade/programs/plumed-2.8.1/bin/plumed
-</code></pre>
-<h2 id="slurm">slurm</h2>
-<h3 id="slurmconf">slurm.conf</h3>
-<pre><code># instant slurm file, automatically generated
-ClusterName=herod
-SlurmctldHost=localhost
-SlurmdUser=root
-MpiDefault=none
-ProctrackType=proctrack/cgroup
-ReturnToService=1
-SlurmctldPidFile=/var/run/slurmctld.pid
-SlurmctldPort=6817
-SlurmdPidFile=/var/run/slurmd.pid
-SlurmdPort=6818
-SlurmdSpoolDir=/var/spool/slurmd
-StateSaveLocation=/var/spool/slurmctld
-SwitchType=switch/none
-TaskPlugin=task/cgroup,task/affinity
-InactiveLimit=0
-KillWait=30
-MinJobAge=300
-SlurmctldTimeout=120
-SlurmdTimeout=300
-Waittime=0
-SchedulerType=sched/builtin
-SelectType=select/cons_tres
-SelectTypeParameters=CR_Core_Memory
-AccountingStorageType=accounting_storage/none
-JobCompType=jobcomp/none
-JobAcctGatherFrequency=30
-JobAcctGatherType=jobacct_gather/none
-SlurmctldDebug=info
-SlurmctldLogFile=/var/log/slurmctld.log
-SlurmdDebug=info
-SlurmdLogFile=/var/log/slurmd.log
-
-# node conf with gpu
-GresTypes=gpu
-PartitionName=normal Nodes=localhost Default=YES MaxTime=UNLIMITED State=UP
-NodeName=localhost CPUs=32 Boards=1 SocketsPerBoard=2 CoresPerSocket=8 ThreadsPerCore=2 RealMemory=30000 Gres=gpu:2
-</code></pre>
-<h3 id="gresconf">gres.conf</h3>
-<pre><code>Name=gpu File=/dev/nvidia[0-1] Count=2
-</code></pre>
-<h3 id="cgroupconf">cgroup.conf</h3>
-<pre><code>CgroupAutomount=yes
-ConstrainCores=no
-ConstrainDevices=yes
-ConstrainRAMSpace=no
-ConstrainSwapSpace=no
-</code></pre>
-<h2 id="daily-backup">daily backup</h2>
-<p>The daily-backup.sh script</p>
-<pre><code class="language-bash">#!/bin/bash
-# ----------------------------------------------------------------------
-# mikes handy rotating-filesystem-snapshot utility
-# ----------------------------------------------------------------------
-# this needs to be a lot more general, but the basic idea is it makes
-# rotating backup-snapshots of /home whenever called
-# ----------------------------------------------------------------------
-# GC: deletes oldest daily backup when running out of space
-# GC: makes a new folder with date
-#
-
-unset PATH  # suggestion from H. Milz: avoid accidental use of $PATH
-
-# ------------- system commands used by this script --------------------
-ID=/usr/bin/id;
-ECHO=/bin/echo;
-
-MOUNT=/bin/mount;
-UMOUNT=/bin/umount;
-RM=/bin/rm;
-MV=/bin/mv;
-CP=/bin/cp;
-TOUCH=/bin/touch;
-
-RSYNC=/usr/bin/rsync;
-
-DATE=/usr/bin/date;
-DF=/usr/bin/df;
-AWK=/usr/bin/awk;
-FIND=/usr/bin/find;
-SORT=/usr/bin/sort;
-# ------------- file locations -----------------------------------------
-
-MOUNT_DEVICE=/dev/sda1;
-SNAPSHOT_RW=/backup;
-EXCLUDES=/home/courtade/backup_exclude;
-
-
-# ------------- the script itself --------------------------------------
-
-# make sure we're running as root
-if (( `$ID -u` != 0 )); then { $ECHO &quot;Sorry, must be root.  Exiting...&quot;; exit; } fi
-
-# attempt to remount the RW mount point as RW; else abort
-$UMOUNT $SNAPSHOT_RW ;
-$MOUNT -o rw $MOUNT_DEVICE $SNAPSHOT_RW ;
-if (( $? )); then
-{
-    $ECHO &quot;snapshot: could not remount $SNAPSHOT_RW readwrite&quot;;
-    exit;
-}
-fi;
-
-
-# step 1:  get date
-today=$($DATE +%F);
-
-# step 2:  free space if necessary
-cd $SNAPSHOT_RW/work/
-a=$($DF . | $AWK 'NR&gt;1 {print $4}')
-a2=${a::-1}
-$ECHO &quot;$a2&quot;
-while [[ $a2 &lt; 20000000 ]];
-do
-    IFS= read -r -d $'\0' line &lt; &lt;($FIND . -maxdepth 1 -type d -printf '%T@ %p\0' \
-        2&gt;/dev/null | $SORT -z -n)
-    file=&quot;${line#* }&quot;
-        $RM -r  $file
-done
-
-cd /
-
-# step 3: rsync from the system into the latest snapshot (notice that
-# rsync behaves like cp --remove-destination by default, so the destination
-# is unlinked first.  If it were not so, this would copy over the other
-# snapshot(s) too!
-$RSYNC                                      \
-    -va --delete --delete-excluded --exclude-from=&quot;$EXCLUDES&quot;  --mkpath \
-    /work/ $SNAPSHOT_RW/work/$today ;
-
-
-# and thats it for home.
-
-# now remount the RW snapshot mountpoint as readonly
-$UMOUNT $SNAPSHOT_RW ;
-$MOUNT -o ro $MOUNT_DEVICE $SNAPSHOT_RW ;
-if (( $? )); then
-{
-    $ECHO &quot;snapshot: could not remount $SNAPSHOT_RW readonly&quot;;
-    exit;
-} fi;
-</code></pre>
-<p>Run by placing the following script inide <code>/etc/cron.daily</code>. Remember to make it executable wih <code>chmod +x</code>.</p>
-<pre><code>#!/bin/bash
-exec /usr/local/bin/daily-backup.sh
-</code></pre>
-<h2 id="sbatch-script-example">sbatch script example</h2>
-<pre><code>#!/bin/bash
-#
-#SBATCH --job-name=bench2
-#SBATCH --gres=gpu:0
-#SBATCH --mem=2G
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --partition=normal
-#SBATCH --time=00:10:00
-rm \#*
-gmx=/home/courtade/programs/gromacs-2022.3/build/bin/gmx
-#export GMX_DISABLE_GPU_DETECTION=1
-cp benchMEM.tpr $SLURM_JOB_NAME.tpr
-$gmx mdrun -deffnm $SLURM_JOB_NAME -ntmpi $SLURM_NTASKS -ntomp $SLURM_CPUS_PER_TASK
-</code></pre>
-<h2 id="bshrc">~/.bshrc</h2>
-<pre><code># User specific aliases and functions
-export DISPLAY=$(echo $SSH_CLIENT | awk '{ print $1}'):0.0
-export SLURMD=/usr/sbin/slurmd
-export SLURMCONF=/etc/slurm/slurm.conf
-export GRESCONF=/etc/slurm/gres.conf
-export SINFO_FORMAT=&quot;%15o %.5D %12P %11T %15O %.6m %15E %.C %G&quot;
-export SQUEUE_FORMAT=&quot;%.18i %.9P %.14j %.8u %.8T %.10M  %.6D %.R %.b&quot;
-export SQUEUE_SORT=&quot;u,T&quot;
-alias squeue_me=&quot;squeue | grep -e courtade&quot;
-alias lsl=&quot;ls -ltrh&quot;
-</code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href=".." class="btn btn-neutral float-left" title="[Protected] Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
