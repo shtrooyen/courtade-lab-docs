@@ -16,3 +16,4 @@ nav:
     - New cool protocol: new_cool_protocol.md #This is the new protocol
 ```
 
+After committing and pushing changes, a GitHub Action will take care of rebuilding the website.
