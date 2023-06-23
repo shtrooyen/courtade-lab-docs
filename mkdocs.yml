@@ -3,6 +3,7 @@ site_url: http://folk.ntnu.no/courtade
 nav:
     - Home: index.md
     - HPC Protocols: hpc.md
+    - Molecular Genetics Protocols: molgen.md
 theme: readthedocs
 
 plugins:
