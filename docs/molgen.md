@@ -113,8 +113,12 @@ Buffer C: 50 mM Tris HCl, ph 7.5, 200 mM NaCl, sf
 ### Day 1: 
 -	In the morning, inoculate 500 mL M9 medium + 500 uL amp stock (100 mg/mL) with cells. 
 -	Add 1-1.5 mL antifoam solution and incubate in LEX at 37°C, 24 h. (Check OD, if below 0.4, let grow overnight, if not proceed.)
--	
+
 ### Day 2: 
+-	Induce with IPTG to a final concentration of 0.1 mM (500 µL 0.1 M IPTG in 500 mL culture). 
+-	Incubate in LEX at 37°C overnight. 
+	
+### Day 3: 
 -	Harvest the cells by centrifugation at 4000xg, 4°C for 10 min. Discard the supernatant. 
 -	Rest the pellet on ice for 5 min. 
 -	On ice, resuspend the pellet in 30 mL spheroplast buffer with 1 tablet protease inhibitor. 
