@@ -70,8 +70,8 @@ Dissolve 9.30 g EDTA (292.24 g/mol) in 50 mL DI water. Adjust pH to 8 with NaOH 
 
 ## ScCBM2-His production and purification
 Cells: BL21_pNIC-ScCBM2-His_KanR
-Buffer A: 50 mM Tris-HCl, pH 8.0, 500 mM NaCl
-Buffer A: 50 mM Tris-HCl, pH 8.0, 500 mM NaCl, 400 mM imidazole
+Buffer A: 50 mM Tris-HCl, pH 8.0, 300 mM NaCl
+Buffer A: 50 mM Tris-HCl, pH 8.0, 300 mM NaCl, 400 mM imidazole
 
 ### Day 1:
 -	In the morning, grow pre-culture. 
